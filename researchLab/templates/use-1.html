@@ -1,0 +1,557 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Science</title>
+    <link href="{% static 'css/bootstrap.min-1.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style-1.css' %}" rel="stylesheet">
+	<link href="{% static 'css/element-1.css' %}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+    <script src="{% static 'js/jquery-2.1.1.min-1.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min-1.js' %}"></script>
+
+  </head>
+
+<body>
+<section id="header">
+ <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			
+			<div class="navbar-header">
+    	<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="{% url 'index' %}"><span class="small_1"><i class="fa fa-sun-o"></i></span>Open Science Lab</a>
+	</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="{% url 'index' %}">HOME</a></li>
+					<li><a href="{% url 'work1' %}">HOW THE OSL WORKS</a></li>
+					<li><a href="{% url 'use1' %}">WHY USE OSL</a></li>
+					<li><a href="{% url 'instrumentation1' %}">ANALYTICAL INSTRUMENTATION</a></li>
+					<li><a href="{% url 'expirement1' %}">GET STARTED</a></li>
+					<li><a href="{% url 'registration' %}">REGISTER</a></li>		
+              
+               {% if user.is_authenticated %}
+              <li><a href="{% url 'logout' %}">LOGOUT</a></li> 
+              
+               {% else %}
+               <li><a href="{% url 'login' %}">LOGIN</a></li>
+               
+               {% endif %}
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+</section>
+<section id="about_main_inner" class="clearfix"> 
+ <div class="about_main_inner_1 clearfix">
+   <div class="container">
+  <div class="row">
+   <div class="about_main_inner_2">
+    <h2>OPEN SCIENCE LAB</h2>
+	<p>Impact on research communities, the relevant industry stakeholders</p>
+   </div>
+  </div>
+ </div>
+ </div>
+
+</section>
+<section id="post">
+ <div class="container">
+  <div class="row">
+   <div class="col-sm-12">
+	<div class="col-sm-5">
+	 <div class="post_2">
+ 
+      <!-- SECTION-1 -->
+        <!-- 1.SVG -->
+        <b><span style="font-size:2.5rem">1. EFFICIENCY</span></b>
+         <p><svg width="152px" height="150px" viewBox="0 0 152 150" version="1.1" xmlns="http://www.w3.org/2000/svg" class="why-cloud-labs__StyledIcon-sc-gce1f9-12 cRgkND">
+                    
+            <g id="icon_Efficiency" stroke="none" stroke-width="3" fill="none" fill-rule="evenodd">
+                <rect id="Rectangle-Copy-6" x="0" y="0" width="200" height="200"></rect>
+                <g id="Group" transform="translate(25.574916, 72.000000)" fill="#0CBD96" fill-rule="nonzero">
+                    
+                    <path d="M15.2154032,0.5 C16.6709618,0.5 17.8509251,1.84314575 17.8509251,3.5 C17.8509251,5.09768088 16.7537398,6.40366088 15.3702602,6.49490731 L15.2154032,6.5 L3.06060606,6.5 C1.60504752,6.5 0.425084175,5.15685425 0.425084175,3.5 C0.425084175,1.90231912 1.52226947,0.596339121 2.90574913,0.505092693 L3.06060606,0.5 L15.2154032,0.5 Z" id="Line-6"></path>
+                    <path d="M97.3558353,0.5 C98.8113939,0.5 99.9913572,1.84314575 99.9913572,3.5 C99.9913572,5.09768088 98.8941719,6.40366088 97.5106923,6.49490731 L97.3558353,6.5 L85.2010382,6.5 C83.7454796,6.5 82.5655163,5.15685425 82.5655163,3.5 C82.5655163,1.90231912 83.6627016,0.596339121 85.0461812,0.505092693 L85.2010382,0.5 L97.3558353,0.5 Z" id="Line-6-Copy"></path>
+                </g>
+                
+                
+                <g id="Group" transform="translate(76.524459, 74.897180) rotate(-315.000000) translate(-76.524459, -74.897180) translate(25.524459, 71.397180)" fill="#0CBD96" fill-rule="nonzero">
+                    <path d="M15.3894506,0.510204082 C16.862885,0.510204082 18.0573395,1.88076097 18.0573395,3.57142857 C18.0573395,5.20171519 16.9466796,6.53434784 15.5462093,6.62745644 L15.3894506,6.63265306 L3.08537925,6.63265306 C1.61194486,6.63265306 0.41749028,5.26209617 0.41749028,3.57142857 C0.41749028,1.94114196 1.52815021,0.608509307 2.92862051,0.515400708 L3.08537925,0.510204082 L15.3894506,0.510204082 Z" id="Line-6"></path>
+                    <path d="M98.5386567,0.510204082 C100.012091,0.510204082 101.206546,1.88076097 101.206546,3.57142857 C101.206546,5.20171519 100.095886,6.53434784 98.6954155,6.62745644 L98.5386567,6.63265306 L86.2345854,6.63265306 C84.761151,6.63265306 83.5666964,5.26209617 83.5666964,3.57142857 C83.5666964,1.94114196 84.6773564,0.608509307 86.0778267,0.515400708 L86.2345854,0.510204082 L98.5386567,0.510204082 Z" id="Line-6-Copy"></path>
+                </g>
+                <g id="Group" transform="translate(76.676319, 74.998195) rotate(-225.000000) translate(-76.676319, -74.998195) translate(25.676319, 71.498195)" fill="#0CBD96" fill-rule="nonzero">
+                    <path d="M15.3894506,0.510204082 C16.862885,0.510204082 18.0573395,1.88076097 18.0573395,3.57142857 C18.0573395,5.20171519 16.9466796,6.53434784 15.5462093,6.62745644 L15.3894506,6.63265306 L3.08537925,6.63265306 C1.61194486,6.63265306 0.41749028,5.26209617 0.41749028,3.57142857 C0.41749028,1.94114196 1.52815021,0.608509307 2.92862051,0.515400708 L3.08537925,0.510204082 L15.3894506,0.510204082 Z" id="Line-6"></path>
+                    <path d="M98.5386567,0.510204082 C100.012091,0.510204082 101.206546,1.88076097 101.206546,3.57142857 C101.206546,5.20171519 100.095886,6.53434784 98.6954155,6.62745644 L98.5386567,6.63265306 L86.2345854,6.63265306 C84.761151,6.63265306 83.5666964,5.26209617 83.5666964,3.57142857 C83.5666964,1.94114196 84.6773564,0.608509307 86.0778267,0.515400708 L86.2345854,0.510204082 L98.5386567,0.510204082 Z" id="Line-6-Copy"></path>
+                </g>
+                <path d="M65.5397383,88.0539729 C66.6444569,89.2063086 67.6281412,90.3571807 68.7435467,91.3685237 C70.7931788,93.2270431 73.3048294,93.9429841 76.0505958,93.8276042 C77.1558115,93.7812571 78.2950759,93.6714876 79.3443723,93.3536439 C81.7958784,92.6111143 82.9343972,90.7177125 83.3089329,88.3713287 C83.8815475,84.7830859 82.4405669,82.1369094 79.0615444,80.623554 C77.4716939,79.9112719 75.8003254,79.3592534 74.1356673,78.8257736 C71.4594894,77.968108 68.8360001,77.0043319 66.3949322,75.6109911 C62.1440642,73.1843535 60.1076042,69.5136617 59.9815992,64.727224 C59.910768,62.0439698 60.3079199,59.4673139 61.5195068,57.0487261 C63.3720541,53.3499821 66.4461295,50.9972559 70.3925474,49.8690695 C75.0865455,48.5274424 79.8121069,48.7508843 84.3907868,50.4581658 C87.4099369,51.5841568 89.7478645,53.6144046 91.5859971,56.318637 C89.3917201,58.124711 87.2131006,59.9173688 84.9897456,61.7471043 C84.5983098,61.3033916 84.2163182,60.8643136 83.8278649,60.431334 C81.1661018,57.4656062 76.2802381,56.2847304 72.5811082,57.7114899 C69.6812527,58.830163 68.0203225,62.4288948 69.1143544,65.2897317 C69.6723056,66.7489341 70.7969067,67.7766205 72.1516472,68.4618261 C73.7218638,69.2560693 75.3758351,69.9039532 77.0290609,70.523785 C79.1293933,71.3111981 81.2993142,71.9251755 83.3772788,72.7621069 C86.1926338,73.8959038 88.6466253,75.5439097 90.3709308,78.0944649 C91.6391827,79.9700596 92.2319282,82.0576314 92.4451675,84.2664375 C92.7448954,87.3731581 92.5845932,90.4396298 91.3315017,93.3551075 C89.5381047,97.5282997 86.2435826,100.05251 81.8672067,101.162402 C77.0593816,102.381819 72.2199931,102.329617 67.5329539,100.609407 C63.7135352,99.2077729 60.7995135,96.6398986 58.6544456,93.2375322 C58.6233793,93.1882579 58.6156748,93.1248355 58.5749158,93.000918 C60.9193053,91.3358367 63.2748786,89.6627057 65.5397383,88.0539729" id="Fill-1" fill="#22B893" fill-rule="nonzero"></path>
+                <path d="M78.5469074,105.209547 L78.5468974,122.514559 C78.5468974,123.88723 77.4341278,125 76.0614569,125 C74.688786,125 73.5760164,123.88723 73.5760164,122.514559 L73.5758822,105.387077 C74.125901,105.426701 74.6817788,105.446869 75.2423162,105.446869 C76.3657834,105.446869 77.4705325,105.365853 78.5469074,105.209547 Z M73.5760164,81 C74.9289098,81.4750706 76.2022213,81.9609456 77.4988688,82.3622928 C78.303963,82.6114269 78.5884835,83.0267562 78.574422,83.9699065 C78.5166375,87.8932227 78.5426921,90.6041955 78.5464695,94.3550831 L78.546993,100.787385 C77.6134566,100.924794 76.6476682,100.996891 75.6588912,100.996891 C74.951717,100.996891 74.2563018,100.960013 73.5760344,100.888738 L73.5760164,81 Z" id="Combined-Shape" fill="#0CBD96"></path>
+                <path d="M76.9081109,49.3771452 C77.4711102,49.3771452 78.027247,49.4026507 78.5750715,49.4524032 L78.5749158,68 C76.9396121,67.1580741 75.4041903,66.3857228 73.8876652,65.5600803 C73.7289939,65.4734822 73.5985176,65.0719484 73.5973178,64.8154848 C73.5906794,63.1957399 73.5853467,58.1550468 73.5813196,49.6934055 L73.5812325,49.6810388 C74.6539475,49.4819366 75.7669315,49.3771452 76.9081109,49.3771452 Z M76.0746979,25 C77.4555301,25 78.5749158,26.1193857 78.5749158,27.5002179 L78.5756151,44.1165908 C78.0247851,44.0766499 77.4686359,44.0563296 76.9081109,44.0563296 C75.777799,44.0563296 74.6652809,44.1389593 73.5782927,44.2984821 C73.5773803,39.5173056 73.5759765,33.9161606 73.5748838,27.5002116 C73.5746853,26.1748418 74.6059492,25.0902037 75.9099115,25.0053453 L76.0746979,25 L76.0746979,25 Z" id="Combined-Shape" fill="#0CBD96"></path>
+            </g>
+            
+            
+        </svg></p>
+	  <!-- <p><a href="#"><img src="img/67.jpg" alt="abc"></a></p> -->
+	 </div>
+	</div>
+	<div class="col-sm-7">
+	 <div class="post_3">
+
+        <p>With significant growth, usage, and awareness in handling the internet regardless of distance, time, and age factors. The proposal brings an exciting and promising opportunity for society to access Open Science Laboratories (OSLs) to conduct real experiments at a physical location via the internet and fetch real-time results for their benefit</p>
+	  <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio.
+         Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p> -->
+	  <!-- <ul>
+	      <li><a href="#"><i class="fa fa-angle-right"></i>Fusce nec tellus sed augue semper porta. Mauris massa</a></li>
+		  <li><a href="#"><i class="fa fa-angle-right"></i>Torquent per conubia nostra,inceptos.Curabitursodales</a></li>
+		  <li><a href="#"><i class="fa fa-angle-right"></i>Mauris massa. Vestibulum lacinia arcu eget nulla</a></li>
+		  <li><a href="#"><i class="fa fa-angle-right"></i>Sed cursus ante dapibus diam. Sed nisi. Nulla</a></li>
+		  <li><a href="#"><i class="fa fa-angle-right"></i>Fusce nec tellus sed augue semper porta. Mauris massa</a></li>
+		  <li><a href="#"><i class="fa fa-angle-right"></i>Mauris massa. Vestibulum lacinia arcu eget nulla</a></li>
+	  </ul> -->
+	 </div>
+	</div>
+   </div>
+   <div class="col-sm-12">
+    <div class="col-sm-7">
+	 <div class="post_3">
+
+        <p>OSL will be a fully aimed to build in fully automated mode, the user sample will be sent to the location, on receiving it the user will be notified with a tracking ID and the user can customize the parameters regarding the process they intend to. The lab provides the flexibility to set the quality of the reagents, thermal setting, reaction time, and so on</p>
+
+	  <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio.
+         Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p> -->
+	  <!-- <ul>
+	      <li><a href="#"><i class="fa fa-angle-right"></i>Fusce nec tellus sed augue semper porta. Mauris massa</a></li>
+		  <li><a href="#"><i class="fa fa-angle-right"></i>Torquent per conubia nostra,inceptos.Curabitursodales</a></li>
+		  <li><a href="#"><i class="fa fa-angle-right"></i>Mauris massa. Vestibulum lacinia arcu eget nulla</a></li>
+		  <li><a href="#"><i class="fa fa-angle-right"></i>Sed cursus ante dapibus diam. Sed nisi. Nulla</a></li>
+		  <li><a href="#"><i class="fa fa-angle-right"></i>Fusce nec tellus sed augue semper porta. Mauris massa</a></li>
+		  <li><a href="#"><i class="fa fa-angle-right"></i>Mauris massa. Vestibulum lacinia arcu eget nulla</a></li>
+	  </ul> -->
+	 </div>
+	</div>
+	<div class="col-sm-5">
+	 <div class="post_3">
+
+        <b><span style="font-size:2.5rem">2. FLEXIBILITY</span></b>
+        <p>
+            <svg width="152px" height="150px" viewBox="0 0 152 150" version="1.1" xmlns="http://www.w3.org/2000/svg" class="why-cloud-labs__StyledIcon-sc-gce1f9-12 cRgkND">
+                <g id="icon_Flexibility" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g transform="translate(71.325624, 75.871681) rotate(-270.000000) translate(-71.325624, -75.871681) translate(32.325624, 33.871681)">
+                        <path d="M69.3668941,0.674499478 C73.8241841,1.66000692 77.0907816,5.61027539 77.1279707,10.0587901 C77.1632481,14.3699928 74.516019,18.0448527 70.349796,19.4701507 C70.1027693,19.5544995 69.8597463,19.6510102 69.5782881,19.7553672 C69.5782881,22.0555385 69.4962128,24.3419785 69.5939024,26.6205721 C69.856143,32.7329152 66.9562821,37.0119477 61.7182756,39.9873014 C56.6508257,42.8657521 51.5741673,45.7296869 46.5207302,48.6320691 C45.5502397,49.1891633 44.5921606,49.8117748 43.7605975,50.5473745 C42.0982721,52.0181816 41.2931333,53.9044554 41.3051444,56.1183163 C41.3187568,58.501267 41.3279653,60.8842177 41.2943344,63.2663838 C41.2859267,63.8905646 41.4961196,64.1644039 42.1058791,64.3746873 C47.2057588,66.1322802 49.9562827,71.246954 48.4132668,76.304349 C47.2025559,80.2750181 44.358346,82.634822 40.1989293,83.2119244 C39.6096671,83.2936545 39.0354922,83.3309882 38.4774406,83.3246461 C34.7151406,83.3507225 31.1553167,81.2835289 29.4734556,77.9041238 C26.7953982,72.5207109 29.4318174,66.2800792 35.2523584,64.2812096 C35.8136735,64.0885806 36.0010454,63.8249417 35.9894348,63.2454853 C35.9513999,61.3533267 36.0070509,59.4588142 35.9634109,57.5666556 C35.9357855,56.3645876 35.9385881,55.1342726 35.6767478,53.9710442 C35.0173428,51.0388458 32.8853865,49.2451594 30.3646734,47.8159383 C24.891251,44.7130806 19.3521683,41.7153647 13.9608211,38.4806877 C9.86185985,36.0212346 7.60258672,32.3659906 7.66384293,27.5078941 C7.69707342,24.8656199 7.66984844,22.2229535 7.66984844,19.6042185 C7.27748841,19.4994692 6.92436438,19.4359133 6.59486202,19.3131172 C0.470442195,17.0282465 -1.81405408,9.88057131 1.97702465,4.60073089 C4.25671652,1.42647107 7.50930112,0.00509628539 11.4296985,0.548851584 C15.5891152,1.12595407 18.4333251,3.48575791 19.6440361,7.45642701 C21.187052,12.5138221 18.436528,17.6284958 13.3366484,19.3860887 C12.7268888,19.5963722 12.516696,19.8702114 12.5251037,20.4943923 C12.5587345,22.8765583 12.5495261,25.259509 12.5359136,27.6424598 C12.5239026,29.8563206 13.3290414,31.7425944 14.9913667,33.2134015 C15.8229298,33.9490012 16.7810089,34.5716128 17.7514995,35.1287069 C22.8049365,38.0310891 27.8815949,40.895024 32.9490449,43.7734746 C35.4007912,45.1661442 37.3402774,46.8444345 38.6830082,48.8626583 C39.7081387,47.4714659 41.0678278,46.2774538 42.7300519,45.2800884 C48.121399,42.0454113 53.6604817,39.0476954 59.1339042,35.9448378 C61.6546172,34.5156166 63.7865735,32.7219303 64.4459786,29.7897318 C64.7078189,28.6265035 64.7050163,27.3961884 64.7326417,26.1941205 C64.7762817,24.3019619 64.7206306,22.4074494 64.7586655,20.5152908 C64.7702762,19.9358344 64.5829043,19.6721954 64.0215892,19.4795664 C58.2010482,17.4806968 55.564629,11.2400651 58.2426864,5.85665225 C60.2389182,1.8455742 64.8807776,-0.316892759 69.3668941,0.674499478 Z M38.6423917,68.5743837 L38.8184626,68.5697634 C35.9818597,68.5960488 33.7810402,70.779701 33.7902198,73.5588948 C33.7990271,76.2908526 36.0515727,78.4932133 38.8431493,78.5067706 C41.442087,78.2447108 43.482098,76.0689295 43.4699533,73.4807176 C43.4575096,70.817061 41.3224089,68.6752494 38.6423917,68.5743837 Z M48.1475633,6.8109088 C49.8391602,11.8552235 47.5555433,17.0980095 42.6987217,19.105517 C41.7544479,19.4961714 41.4909387,19.9603191 41.4987233,20.9534615 C41.5469879,27.2951103 41.5115679,35.429466 41.538814,41.7715078 C41.5406305,42.284782 40.7114911,43.2109859 39.0513959,44.5501194 C37.5574244,43.3379445 36.8104387,42.4117406 36.8104387,41.7715078 C36.8104387,34.0562805 36.7719048,28.5586453 36.8104387,20.8434181 C36.8147202,19.9838999 36.5842956,19.6242935 35.7634079,19.3417175 C31.668311,17.9319819 29.1628325,14.0120758 29.3282556,9.42915769 C29.470714,5.49549615 32.5238402,1.71196537 36.4005787,0.665373235 C41.3512048,-0.67086907 46.5505494,2.04917005 48.1475633,6.8109088 Z M10.1020803,5.25394296 C7.29750678,5.25276647 5.02982593,7.46074253 5.02098906,10.2018813 C5.0118094,12.981075 7.21262889,15.1647272 10.0492318,15.1910127 C12.889438,15.2176904 15.237993,12.951651 15.2175743,10.2042352 C15.1975559,7.49722828 12.8806299,5.25512039 10.1020803,5.25394296 Z M62.0361673,10.1297999 C62.0005346,12.8850622 64.281828,15.1483553 67.1368478,15.1895489 C69.9442239,15.2303502 72.2263179,13.0341437 72.2391841,10.2800584 C72.2519414,7.56128195 70.0002753,5.29759648 67.2145191,5.2289405 C64.4924212,5.16185381 62.0709993,7.453394 62.0361673,10.1297999 Z M39.0321679,5.05609691 C36.3597094,5.05021306 34.0671402,7.34422668 34.0585445,10.0328248 C34.0488464,12.8676236 36.2160833,15.0787116 39.0006402,15.0755708 C41.7583402,15.0728164 43.9718956,12.8939554 43.9879332,10.1676281 C44.0034233,7.41693399 41.7201956,5.06200343 39.0321679,5.05609691 Z" id="Combined-Shape" fill="#22B893"></path>
+                        <g id="Group-6" transform="translate(30.128319, 0.325624)"></g>
+                    </g>
+                    <rect id="Rectangle-Copy-5" x="0" y="0" width="155" height="150"></rect>
+                </g>
+            </svg>
+    </p>
+	  <!-- <p><a href="#"><img src="img/68.jpg" alt="abc"></a></p> -->
+	 </div>
+	</div>
+   </div>
+  </div>
+ </div>
+
+
+ 
+ 
+
+
+</section>
+
+
+<!-- SECTION-3 -->
+
+
+<section id="post">
+    <div class="container">
+     <div class="row">
+      <div class="col-sm-12">
+       <div class="col-sm-5">
+        <div class="post_2">
+    
+         <!-- SECTION-1 -->
+           <!-- 1.SVG -->
+           <b><span style="font-size:2.5rem">3. PRODUCTIVITY</span></b>
+            <p><svg width="152px" height="150px" viewBox="0 0 152 150" version="1.1" xmlns="http://www.w3.org/2000/svg" class="why-cloud-labs__StyledIcon-sc-gce1f9-12 cRgkND">
+                <g id="icon_Productivity" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g transform="translate(44.000000, 59.000000)" fill="#22B893" id="Combined-Shape">
+                        <path d="M66.0736176,0.661705341 C68.2948947,0.673728134 69.1239574,1.56060949 69.1247406,3.82971127 C69.127482,10.4374382 69.1259155,17.0447644 69.1259155,23.6528922 C69.1259155,30.2606191 69.0714801,36.8687469 69.1537206,43.4756723 C69.1842671,45.9555737 67.8578451,46.8144019 65.8778069,46.8064422 C61.866428,46.7907571 57.8550491,46.8196118 53.8440618,46.7947647 C51.4304986,46.7799366 50.5787219,45.8617959 50.5787219,43.3750816 C50.5767638,30.2265546 50.5767638,17.0776267 50.5787219,3.92869893 C50.5791135,1.53496086 51.3972108,0.670922816 53.7465481,0.660102302 C57.8554407,0.640865834 61.9643334,0.638862035 66.0736176,0.661705341 Z M40.7132977,13.7189916 C42.5960288,13.7249008 43.4975192,14.612765 43.498301,16.4184087 C43.5010376,25.3402613 43.5010376,34.2621138 43.4979101,43.1835969 C43.4971282,45.0848966 42.5874282,45.933612 40.5733438,45.9343507 C36.2746497,45.9355079 31.9763465,45.9365666 27.6776524,45.933612 C25.8512156,45.932504 24.9293967,45.0664302 24.9270511,43.3283735 C24.9204053,38.836239 24.9250965,34.3448432 24.9247055,29.8530781 C24.9243146,25.3613129 24.9211872,20.8699171 24.9258783,16.3777827 C24.927833,14.5606897 25.7960942,13.7237929 27.7194822,13.7189916 C32.0506237,13.7075424 36.3817652,13.7056958 40.7132977,13.7189916 Z M16.0611102,24.1703829 C17.7661041,24.1756427 18.7187567,25.1024884 18.7250164,26.7401538 C18.7363622,29.525575 18.7281463,32.3109963 18.7277551,35.0964175 C18.7277551,37.7879144 18.7320586,40.4794113 18.7261901,43.1709081 C18.7222778,44.9919139 17.7958378,45.9198867 15.9308295,45.9255222 C11.5963579,45.9382959 7.26149503,45.9397987 2.92702338,45.9243951 C1.11483161,45.9180082 0.161787748,44.9795159 0.159440349,43.2325225 C0.152398153,37.7556044 0.15200692,32.2786863 0.159440349,26.8017682 C0.161787748,25.0976044 1.10465955,24.1745156 2.86168745,24.1700072 C7.26188626,24.1587363 11.6616938,24.1579849 16.0611102,24.1703829 Z M38.5764605,18.3396521 L29.8312997,18.3396521 L29.8312997,41.278604 L38.5764605,41.278604 L38.5764605,18.3396521 Z M13.7841335,28.826402 L5.08428276,28.826402 L5.08428276,41.2281764 L13.7841335,41.2281764 L13.7841335,28.826402 Z">
+                        </path>
+                    </g>
+                    <rect id="Rectangle-Copy-4" x="0" y="0" width="155" height="150"></rect>
+                    <path d="M47,66.1344266 C72.3581318,66.1344266 91.775345,45.9846217 97.2541001,36.066401" id="Path-13" stroke="#22B893" stroke-width="4" stroke-linecap="round"></path>
+                    <polyline id="Rectangle" stroke="#22B893" stroke-width="4" stroke-linecap="round" transform="translate(95.000000, 40.000000) rotate(-14.000000) translate(-95.000000, -40.000000) " points="90 35 100 35 100 45"></polyline>
+                    <polyline id="Path-14" stroke="#22B893" stroke-width="4" stroke-linecap="round" points="32 40 32 116.171369 120.5 116.171369"></polyline>
+                </g>
+            </svg></p>
+         <!-- <p><a href="#"><img src="img/67.jpg" alt="abc"></a></p> -->
+        </div>
+       </div>
+       <div class="col-sm-7">
+        <div class="post_3">
+   
+           <p>In a wider spectrum, this technology allows the user to deploy the equipment from a simple blood diagnostic test to a laborious procedure where the user is trying out to evaluate the microbes in the soil or figuring out a plant leaf that can be a potential element for the discovery of a drug. The geographically flexible OSL will be equipped with the analytical instruments (sequencer, monitor, centrifuge, etc.,) in its designated bay, and the sample will be sent to a test or a series of tests involving one or more equipment. </p>
+         <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio.
+            Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p> -->
+         <!-- <ul>
+             <li><a href="#"><i class="fa fa-angle-right"></i>Fusce nec tellus sed augue semper porta. Mauris massa</a></li>
+             <li><a href="#"><i class="fa fa-angle-right"></i>Torquent per conubia nostra,inceptos.Curabitursodales</a></li>
+             <li><a href="#"><i class="fa fa-angle-right"></i>Mauris massa. Vestibulum lacinia arcu eget nulla</a></li>
+             <li><a href="#"><i class="fa fa-angle-right"></i>Sed cursus ante dapibus diam. Sed nisi. Nulla</a></li>
+             <li><a href="#"><i class="fa fa-angle-right"></i>Fusce nec tellus sed augue semper porta. Mauris massa</a></li>
+             <li><a href="#"><i class="fa fa-angle-right"></i>Mauris massa. Vestibulum lacinia arcu eget nulla</a></li>
+         </ul> -->
+        </div>
+       </div>
+      </div>
+      <div class="col-sm-12">
+       <div class="col-sm-7">
+        <div class="post_3">
+   
+           <p>The main focus of this OSL is to : With the increase in the growth of connecting technologies, it is a promising technology or a platform to access lab equipment amidst a routine schedule. At the start of this, there would be a huge interest in the diagnostic instruments companies, and the automation field to automate the end-to-end process with the use of conveyors and manipulators.
+            </p>
+   
+         <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio.
+            Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p> -->
+         <!-- <ul>
+             <li><a href="#"><i class="fa fa-angle-right"></i>Fusce nec tellus sed augue semper porta. Mauris massa</a></li>
+             <li><a href="#"><i class="fa fa-angle-right"></i>Torquent per conubia nostra,inceptos.Curabitursodales</a></li>
+             <li><a href="#"><i class="fa fa-angle-right"></i>Mauris massa. Vestibulum lacinia arcu eget nulla</a></li>
+             <li><a href="#"><i class="fa fa-angle-right"></i>Sed cursus ante dapibus diam. Sed nisi. Nulla</a></li>
+             <li><a href="#"><i class="fa fa-angle-right"></i>Fusce nec tellus sed augue semper porta. Mauris massa</a></li>
+             <li><a href="#"><i class="fa fa-angle-right"></i>Mauris massa. Vestibulum lacinia arcu eget nulla</a></li>
+         </ul> -->
+        </div>
+       </div>
+       <div class="col-sm-5">
+        <div class="post_3">
+   
+           <b><span style="font-size:2.5rem">4. REPRODUCIBILITY</span></b>
+           <p>
+            <svg width="152px" height="150px" viewBox="0 0 152 150" version="1.1" xmlns="http://www.w3.org/2000/svg" class="why-cloud-labs__StyledIcon-sc-gce1f9-12 cRgkND">
+                    <g id="icon_Reproducibility" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g transform="translate(75.000000, 74.000000) scale(-1, -1) translate(-75.000000, -74.000000) translate(35.000000, 29.000000)" fill="#22B893" id="Combined-Shape">
+                            <path d="M75.9178158,37.0570887 L75.9178158,65.4990268 L75.9178158,67.5175464 L75.9178158,69.5158878 L20.5885471,69.5158878 L20.5885471,65.4990268 L20.5885471,61.315077 L20.563697,61.315077 L20.563697,4.14233496 L75.8478803,4.13950294 L75.8478803,4.27189969 L75.9178158,4.27189969 L75.9178158,37.0570887 Z M65.6103184,77.6717403 L12.3478742,77.6717403 L12.3478742,14.3899854 L16.4229479,14.3899854 L16.4229479,15.5663341 C16.4229479,33.9121347 16.4225929,52.2579353 16.4243679,70.603736 C16.4243679,70.9860581 16.4197528,71.3708583 16.4566731,71.7503485 C16.5574938,72.7928844 17.2021783,73.4807104 18.2402056,73.6393033 C18.5877531,73.6924036 18.9470156,73.6782435 19.3005981,73.6782435 C34.3306937,73.6800135 49.3607893,73.6796595 64.3912398,73.6796595 L65.6103184,73.6796595 L65.6103184,77.6717403 Z M57.4175709,85.8771531 L4.15335168,85.8771531 L4.15335168,22.5447759 L8.21209519,22.5447759 L8.21209519,23.6782904 L8.21209519,78.8084407 C8.21209519,81.3197311 8.74104891,81.839406 11.2949368,81.839406 C26.2969872,81.839406 41.2986826,81.839406 56.300733,81.839406 L57.4175709,81.839406 L57.4175709,85.8771531 Z M79.9989245,2.74154897 C79.9985695,0.570100584 79.4351805,2.13162821e-13 77.2962905,2.13162821e-13 C57.8293737,2.13162821e-13 38.362457,2.13162821e-13 18.8958952,2.13162821e-13 C17.1173327,2.13162821e-13 16.437858,0.662849113 16.4268529,2.45586934 C16.4126528,4.6945781 16.4229479,6.93364087 16.4229479,9.17234964 L16.4229479,10.2219656 L15.4552111,10.2219656 C13.8005444,10.2219656 12.1462328,10.2099296 10.4922762,10.2265677 C9.02398589,10.2410817 8.24759544,10.9986461 8.21848523,12.4567804 C8.19292505,13.7520738 8.21245019,15.0487832 8.21209519,16.3451385 L8.21209519,18.3824202 C6.30821681,18.3824202 4.53923939,18.3817122 2.77026196,18.3824202 C0.687107327,18.3831282 8.52651283e-13,19.05821 8.52651283e-13,21.1163778 C8.52651283e-13,43.1806156 8.52651283e-13,65.2452074 8.52651283e-13,87.3097992 C8.52651283e-13,89.3555769 0.646637043,90 2.70068147,90 C21.429193,90 40.1577046,90 58.8855062,90 C60.9260605,90 61.564355,89.3513289 61.565775,87.2892671 C61.567195,85.5012029 61.56613,83.7127847 61.56613,81.839052 C63.6084593,81.839052 65.550678,81.8248919 67.4928966,81.8454241 C68.3761428,81.8546281 69.0797578,81.5193882 69.4762956,80.7628859 C69.6963971,80.3433935 69.7571025,79.8049564 69.7659776,79.3178497 C69.7975728,77.4717291 69.7787577,75.6245466 69.7787577,73.6796595 L70.8356001,73.6796595 C73.0213505,73.6796595 75.2071008,73.6828455 77.3932062,73.6789515 C79.2889195,73.6754115 79.9946645,72.9642214 79.9982145,71.0561505 C80.0017645,69.1707358 79.9989245,67.285321 79.9989245,65.3999063 C79.9989245,44.5137872 80,23.6276681 79.9989245,2.74154897 L79.9989245,2.74154897 Z">
+                            </path>
+                        </g>
+                        <rect id="Rectangle-Copy-7" x="0" y="0" width="155" height="150"></rect>
+                        <line x1="49.5" y1="61" x2="69.5" y2="61" id="Line-7" stroke="#22B893" stroke-width="2" stroke-linecap="round"></line>
+                        <line x1="49.5" y1="105" x2="56" y2="105" id="Line-7-Copy-5" stroke="#22B893" stroke-width="2" stroke-linecap="round"></line>
+                        <line x1="49.5" y1="69.5" x2="84.5" y2="69.5" id="Line-7-Copy" stroke="#22B893" stroke-width="2" stroke-linecap="round"></line>
+                        <line x1="49.5" y1="78" x2="84.5" y2="78" id="Line-7-Copy-2" stroke="#22B893" stroke-width="2" stroke-linecap="round"></line>
+                        <line x1="49.5" y1="87" x2="84.5" y2="87" id="Line-7-Copy-3" stroke="#22B893" stroke-width="2" stroke-linecap="round"></line>
+                        <line x1="49.5" y1="96" x2="84.5" y2="96" id="Line-7-Copy-4" stroke="#22B893" stroke-width="2" stroke-linecap="round"></line>
+                        <circle id="Oval-Copy-22" fill="#0CBD96" cx="30" cy="29" r="5"></circle>
+                    </g>
+                </svg>
+       </p>
+         <!-- <p><a href="#"><img src="img/68.jpg" alt="abc"></a></p> -->
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   
+   
+    
+    
+   
+   
+   </section>
+
+
+<section id="about_main">
+ <div class="about_inner clearfix">
+   <div class="container">
+    <div class="row">
+     <div class="col-sm-12">
+      <div class="about_main_1">
+		 <h2>BENEFITS</h2>
+
+         
+		 <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio.
+			Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. 
+			Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
+			torquent per conubia nostra, per inceptos . Curabitursodales ligula in libero.  -->
+			OPEN SCIENCE LAB</p>
+	  </div>
+      <div class="col-sm-4">
+	   <div class="about_main_2">
+	    <h2>01</h2>
+		<!-- <h3>Sagittis</h3> -->
+		<p>Access: Make the scientific research equipment available to researchers across all universities and research institutes in India – not just Tier 1 institutes with big budgets and large teams.
+        </p>
+	   </div>
+	  </div>
+	  <div class="col-sm-4">
+	   <div class="about_main_2">
+	    <h2>02</h2>
+		<!-- <h3>Dignissim</h3> -->
+		<p>Collaboration: make it possible for remote researchers to collaborate and run shared experiments. Make it easier for collaborators to enhance experimental setups suggested by other researchers and make rapid progress.
+        </p>
+	   </div>
+	  </div>
+	  <div class="col-sm-4">
+	   <div class="about_main_2">
+	    <h2>03</h2>
+		<!-- <h3>Vestibulum</h3> -->
+		<p>Replication: Make it easier for researchers to replicate experimental setup and results reported by other researchers. This can help to alleviate the replication crisis.
+        </p>
+	   </div>
+	  </div>
+     </div>
+    </div>
+
+    <!-- SECTION 2 -->
+
+    <div class="row">
+        <div class="col-sm-12">
+         <div class="about_main_1">
+          
+            
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio.
+               Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. 
+               Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
+               torquent per conubia nostra, per inceptos . Curabitursodales ligula in libero.  -->
+         </div>
+         <div class="col-sm-4">
+          <div class="about_main_2">
+           <h2>04</h2>
+           <!-- <h3>Sagittis</h3> -->
+           <p>Citizen science: Make it easier for independent researchers to run custom experiments based on their hypotheses.</p>
+          </div>
+         </div>
+         </div>
+        </div>
+       </div>
+  </div>
+ </div>
+</section>
+<section id="hourly">
+ <div class="container">
+  <div class="row">
+   <div class="col-sm-12 padding_all">
+    <div class="hourly_1">
+	 <h2 class="text-center">Vestibulum Lacinia Arcu Eget</h2>
+	 <p class="text-center">Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
+	 <h4 class="text-center">Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.<br/> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio.Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</h4>
+	</div>
+	<div class="col-sm-3 left_1">
+	 <div class="hourly_2">
+	  <h1>43</h1>
+	  <p>Dignissim Lacinia</p>
+	 </div>
+	</div>
+	<div class="col-sm-3 left_1">
+	 <div class="hourly_2">
+	  <h1>22</h1>
+	  <p>Fusce Nec Tellus</p>
+	 </div>
+	</div>
+	<div class="col-sm-3 left_1">
+	 <div class="hourly_2">
+	  <h1>25</h1>
+	  <p>Sed Dignissim</p>
+	 </div>
+	</div>
+	<div class="col-sm-3 left_1">
+	 <div class="hourly_2">
+	  <h1>321</h1>
+	  <p>Elementum Imperdiet</p>
+	 </div>
+	</div>
+   </div>
+  </div>
+ </div>
+</section>
+<section id="monials">
+ <div class="container">
+  <div class="row">
+   <div class="col-sm-12">
+	<div class="monials_2">
+			<div class="col-md-6 col-md-offset-6">
+			 <div class="people_2 clearfix">
+			  <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
+				<div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+				  <!-- Carousel indicators -->
+                  <ol class="carousel-indicators">
+				    <li data-target="#fade-quote-carousel" data-slide-to="0" class=""></li>
+				    <li data-target="#fade-quote-carousel" data-slide-to="1" class=""></li>
+				    <li data-target="#fade-quote-carousel" data-slide-to="2" class="active"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="3"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="4"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="5"></li>
+				  </ol>
+				  <!-- Carousel items -->
+				  <div class="carousel-inner">
+				    <div class="item">
+                        <div class="profile-circle"><img src="{% static 'img/check1/1.jpeg' %}" alt="Texto Alternativo" class="img-circle img-thumbnail"></div>
+				    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio. Praesent libero. 
+Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum </p>
+				    	</blockquote>	
+				    </div>
+				    <div class="item">
+                        <div class="profile-circle"><img src="{% static 'img/check1/1.jpeg' %}" alt="Texto Alternativo" class="img-circle img-thumbnail"></div>
+				    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio. Praesent libero. 
+Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum </p>
+				    	</blockquote>
+				    </div>
+				    <div class="item active">
+                        <div class="profile-circle"><img src="{% static 'img/check1/1.jpeg' %}" alt="Texto Alternativo" class="img-circle img-thumbnail"></div>
+				    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio. Praesent libero. 
+Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum </p>
+				    	</blockquote>
+				    </div>
+                    <div class="item">
+                        <div class="profile-circle"><img src="{% static 'img/check1/1.jpeg' %}" alt="Texto Alternativo" class="img-circle img-thumbnail"></div>
+    			    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio. Praesent libero. 
+Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum </p>
+				    	</blockquote>
+				    </div>
+                    <div class="item">
+                        <div class="profile-circle"><img src="{% static 'img/check1/1.jpeg' %}" alt="Texto Alternativo" class="img-circle img-thumbnail"></div>
+    			    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio. Praesent libero. 
+Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum </p>
+				    	</blockquote>
+				    </div>
+                    <div class="item">
+                        <div class="profile-circle"><img src="{% static 'img/check1/1.jpeg' %}" alt="Texto Alternativo" class="img-circle img-thumbnail"></div>
+    			    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio. Praesent libero. 
+Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum </p>
+				    	</blockquote>
+				    </div>
+				  </div>
+			 </div>               
+				</div>
+			</div>							
+	</div>
+   </div>
+  </div>
+ </div>
+</section>
+<section id="meet">
+ <div class="container">
+  <div class="row">
+   <div class="col-sm-12 padding_all">
+    <div class="col-sm-6">
+	 <div class="meet_1">
+	  <p><a href="#"><img src="{% static 'img/check1/1.jpeg' %}"></a></p>
+	 </div>
+	</div>
+	<div class="col-sm-6">
+	 <div class="meet_2">
+	  <h2>Sed Dignissim Lacinia Nunc<br/>  Torquent Per Conubia Nostra<br/> Duis Sagittis Ipsum...</h2>
+	  <h4>Fusce Nec Tellus?</h4>
+	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio.Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
+	  <ul>  
+	      <li><i class="fa fa-arrow-right"></i><a href="#">Curabitursodales Ligula In</a></li>
+		  <li><i class="fa fa-arrow-right"></i><a href="#">Nec Tellus Sed Augue Semper Porta</a></li>
+		  <li><i class="fa fa-arrow-right"></i><a href="#">Sed Cursus Ante Dapibus Diam. Sed Nisi</a></li>
+		  <li><i class="fa fa-arrow-right"></i><a href="#">Nulla Quis Sem At Nibh Elementum </a></li>
+		  <li><i class="fa fa-arrow-right"></i><a href="#">Vestibulum Lacinia Arcu Eget Nulla.</a></li>
+	  </ul>
+	 </div>
+	</div>
+   </div>
+  </div>
+ </div>
+</section>
+<section id="footer">
+ <div class="container">
+  <div class="row">
+   <div class="col-sm-12">
+    <div class="footer_main clearfix">
+	 <div class="col-sm-4">
+	 <div class="footer_1">
+	  <h3>NULLA QUIS</h3>
+	  <hr class="hr_4">
+	  <p>Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.torquent per conubia nostra,</p>
+	  <h4><i class="fa fa-phone"></i>+91 1234 567 890</h4>
+	  <h5><i class="fa fa-envelope"></i>info@gmail.com</h5>
+	 </div>
+	</div>
+	 <div class="col-sm-4">
+	 <div class="footer_1">
+	  <h3>QUIS SEM</h3>
+	  <hr class="hr_4">
+	 </div>
+	 <div class="col-sm-12 space_all">
+	  <div class="col-sm-6 space_all">
+	   <div class="footer_2">
+	    <ul>
+		    <li><a href="#"><i class="fa fa-arrow-right"></i>Massa</a></li>
+			<li><a href="#"><i class="fa fa-arrow-right"></i>Quis</a></li>
+			<li><a href="#"><i class="fa fa-arrow-right"></i>Semper</a></li>
+			<li><a href="#"><i class="fa fa-arrow-right"></i>Fusce</a></li>
+			<li><a href="#"><i class="fa fa-arrow-right"></i>Integer</a></li>
+		</ul>
+	   </div>
+	  </div>
+	  <div class="col-sm-6 space_all">
+	   <div class="footer_2">
+	    <ul>
+		    <li><a href="#"><i class="fa fa-arrow-right"></i>Lacinia</a></li>
+			<li><a href="#"><i class="fa fa-arrow-right"></i>Dignissim</a></li>
+			<li><a href="#"><i class="fa fa-arrow-right"></i>Sed</a></li>
+			<li><a href="#"><i class="fa fa-arrow-right"></i>Sagittis</a></li>
+			<li><a href="#"><i class="fa fa-arrow-right"></i>Adipiscing</a></li>
+		</ul>
+	   </div>
+	  </div>
+	 </div>
+	</div>
+	 <div class="col-sm-4">
+	 <div class="footer_1">
+	  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3635689.793072721!2d78.6421709625!3d27.141236999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1531201517392 " height="300" style="border:0; width:100%;" allowfullscreen=""></iframe>
+	 </div>
+	</div>
+	</div>
+   </div>
+   <div class="col-sm-12">
+    <div class="col-sm-6 space_all">
+	 <div class="footer_6">
+	  <p>© 2016 Interient. All Rights Reserved. Design By <a href="http://www.templateonweb.com">Template On Web</a></p>
+	 </div>
+	</div>
+	<div class="col-sm-6 space_all">
+	 <div class="footer_7">
+	  <ul>
+	      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+		  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+		  <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+		  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+		  <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+		  <li><a href="#"><i class="fa fa-rss"></i></a></li>
+		  <li><a href="#"><i class="fa fa-skype"></i></a></li>
+		  <li><a href="#"><i class="fa fa-share-alt"></i></a></li>
+	  </ul>
+	 </div>
+	</div>
+   </div>
+  </div>
+ </div>
+</section>
+<script src="{% static 'js/classie-1.js' %}"></script> 
+<script src="{% static 'js/cbpAnimatedHeader-1.js' %}"></script>
+<script src="{% static 'js/skrollr-1.js' %}"></script>
+</body>
+</html>
