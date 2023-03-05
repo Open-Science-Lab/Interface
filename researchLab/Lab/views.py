@@ -40,7 +40,7 @@ from .serializers import UserSerializer, UserRegisterSerializer,UserLoginSeriali
 
 # cloudmpq
 import pika,json
-from .producer import publish
+# from .producer import publish
 
 
 # redis
@@ -350,7 +350,7 @@ def beakerTest(request):
    if request.method=="POST":
       beakerSlot=request.POST['beaker']
       print(beakerSlot)
-   f = open('/home/prateek-mohanty/Desktop/Projects/IISC-PROJECT/researchLab/Lab/beaker.txt', 'r')
+   f = open('/home/prateek-mohanty/Desktop/OSL_ORGANIZATION/OPEN_SCIENCE_LAB-master/researchLab/Lab/beaker.txt', 'r')
    if f.mode == 'r':
        contents =f.read()
       #  print (contents)
