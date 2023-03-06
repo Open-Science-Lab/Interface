@@ -400,6 +400,10 @@ class SignInAPI(generics.GenericAPIView):
 
 
 
+# CRUD for operations
+
+
+
 # peak api
 
 def peak(request):
