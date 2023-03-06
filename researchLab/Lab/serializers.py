@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate
 from django.db import models
 from django.db.models import fields
 
+from .models import operation
+
 
 # User Serializer
 class UserSerializer(serializers.ModelSerializer):
@@ -35,3 +37,11 @@ class UserLoginSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Incorrect Credentials Passed .")
+
+
+# operations serializer
+
+class OperationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=operation
+        fields='__all__'

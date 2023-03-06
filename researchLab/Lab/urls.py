@@ -1,7 +1,7 @@
 from unicodedata import name
 from . import views
 from django.urls import path
-from .views import UserRegisterAPI,SignInAPI
+from .views import UserRegisterAPI,SignInAPI,OperationViewSet
 
 urlpatterns=[
     path('',views.index,name='index'),
@@ -38,6 +38,15 @@ urlpatterns=[
           # rest apis
       path('userRegister/', UserRegisterAPI.as_view(), name='userRegister'),
       path('userlogin/',SignInAPI.as_view(),name="userLogin"),
+
+
+      # operations rest urls
+
+       path('operations/', OperationViewSet.as_view({
+        'get':'list',
+        'post':'create'
+        
+    })),
 
   
 ]

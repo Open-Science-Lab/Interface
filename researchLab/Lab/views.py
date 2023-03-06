@@ -3,6 +3,8 @@ import re
 from django.conf import settings
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+
+from .models import operation
 from .forms import NewuserForm
 from django.contrib import messages,auth
 from django.contrib.auth import login
@@ -34,7 +36,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from django.http import Http404
 
-from .serializers import UserSerializer, UserRegisterSerializer,UserLoginSerializer
+from .serializers import UserSerializer, UserRegisterSerializer,UserLoginSerializer,OperationSerializer
 
 
 
@@ -402,6 +404,22 @@ class SignInAPI(generics.GenericAPIView):
 
 # CRUD for operations
 
+
+class OperationViewSet(viewsets.ViewSet):
+
+   def list(self,request):
+      operations=operation.objects.all()
+      serializer=OperationSerializer(operations,many=True)
+
+      return Response(serializer.data)
+   
+   def create(self,request):
+      serializer=OperationSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+
+      serializer.save()
+
+      return Response(serializer.data,status=status.HTTP_201_CREATED)
 
 
 # peak api
