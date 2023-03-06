@@ -421,6 +421,33 @@ class OperationViewSet(viewsets.ViewSet):
 
       return Response(serializer.data,status=status.HTTP_201_CREATED)
 
+   
+   def retrive(self,request,pk=None):
+      op=operation.objects.get(id=pk)
+      serializer=OperationSerializer(op)
+
+      return Response(serializer.data)
+   
+
+   def update(self,request,pk=None):
+      op=operation.objects.get(id=pk)
+      serialzer=OperationSerializer(instance=op,data=request.data)
+      serialzer.is_valid(raise_exception=True)
+      serialzer.save()
+
+      return Response(serialzer.data,status=status.HTTP_202_ACCEPTED)
+
+   
+   def delete(self,request,pk=None):
+      try:
+         op=operation.objects.get(id=pk)
+      except op.DoesNotExist:
+         op=None
+         raise Http404
+      op.delete()
+
+      return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 # peak api
 

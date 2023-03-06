@@ -48,5 +48,11 @@ urlpatterns=[
         
     })),
 
+    path('operations/<str:pk>',OperationViewSet.as_view({
+        'get':'retrive',
+        'put':'update',
+        'delete':'delete'
+    }))
+
   
 ]
