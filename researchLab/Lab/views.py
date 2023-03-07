@@ -418,7 +418,11 @@ class OperationViewSet(viewsets.ViewSet):
       serializer.is_valid(raise_exception=True)
 
       serializer.save()
-
+      client=mqtt.Client()
+      client.connect("broker.mqttdashboard.com", 1883, 60)
+      print(serializer.data)
+      payload=json.dumps(serializer.data)
+      client.publish('prateek1', payload=payload, qos=2, retain=False)
       return Response(serializer.data,status=status.HTTP_201_CREATED)
 
    

@@ -8,8 +8,7 @@ from django.contrib.postgres.fields import JSONField
 class operation(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     operation_type=models.CharField(max_length=100)
-    pick_beaker=models.CharField(max_length=100)
-    reactants=models.JSONField()
+    arguments=models.JSONField()
 
 
 
