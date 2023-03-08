@@ -171,9 +171,9 @@ def add_queue(argv):
 
 
 def expirement1(request):
-
    if request.method=="POST":
-      
+      print(os.getcwd())
+
         # Checking weather the user is signed in or not
       if not request.user.is_authenticated:
        messages.error(request, "Please sign in ")
@@ -293,7 +293,7 @@ def expirement1(request):
 
       return redirect('index')
    
-   f = open('/home/prateek-mohanty/Desktop/Projects/IISC-PROJECT/researchLab/Lab/beaker.txt', 'r')
+   f = open('./Lab/beaker.txt', 'r')
    if f.mode == 'r':
        contents =f.read()
        print (contents)
@@ -302,6 +302,7 @@ def expirement1(request):
        
       
    context={'beakers':ls}
+   #context={}
    
    return render(request,'testExpirement-1.html',context)
 
@@ -419,6 +420,20 @@ class OperationViewSet(viewsets.ViewSet):
 
       serializer.save()
       client=mqtt.Client()
+      
+
+      # inserting into redis queue
+      q=[]
+
+      q.append(serializer.data)
+
+      #redis_cache=caches['default']
+
+      #queue=django_rq.get_queue('default')
+
+      #queue.enqueue(add_queue,q)
+
+
       client.connect("broker.mqttdashboard.com", 1883, 60)
       print(serializer.data)
       payload=json.dumps(serializer.data)

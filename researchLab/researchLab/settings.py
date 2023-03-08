@@ -147,7 +147,7 @@ STATIC_URL = '/static/'
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/',
+        'LOCATION': 'redis://127.0.0.1:6380/',
         'OPTIONS': {
         'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
@@ -156,16 +156,16 @@ CACHES = {
 
 RQ_QUEUES = {
     'default': {
-    'HOST': 'localhost',
-    'PORT': 6379,
+    'HOST': 'redis',
+    'PORT': 6380,
     'DB': 0,
     }
 }
 
 
 # reddis settings
-REDIS_HOST = 'localhost'
-REDIS_PORT = 6379
+REDIS_HOST = 'redis'
+REDIS_PORT = 6380
 
 # email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
