@@ -427,11 +427,11 @@ class OperationViewSet(viewsets.ViewSet):
 
       q.append(serializer.data)
 
-      #redis_cache=caches['default']
+      redis_cache=caches['default']
 
-      #queue=django_rq.get_queue('default')
+      queue=django_rq.get_queue('default')
 
-      #queue.enqueue(add_queue,q)
+      queue.enqueue(add_queue,q)
 
 
       client.connect("broker.mqttdashboard.com", 1883, 60)
@@ -491,28 +491,32 @@ def peak(request):
 
       q=queue.get_jobs()[0].args[0]
 
-      # publishing the ingridents
-      payload=""
-      for i in range(0,len(q)-1,2):
+      print(queue.get_jobs()[0].args[0][0])
 
-       payload=payload+queue.get_jobs()[0].args[0][i]+" "
+      arg=queue.get_jobs()[0].args[0][0]
+
+      # publishing the ingridents
+      # payload=""
+      # for i in range(0,len(q)-1,2):
+
+      #  payload=payload+queue.get_jobs()[0].args[0][i]+" "
       
-      payload=payload+" ,"
+      # payload=payload+" ,"
 
       # publishing the quantities
 
 
-      for i in range(1,len(q),2):
-         payload=payload+queue.get_jobs()[0].args[0][i]+" "
+      # for i in range(1,len(q),2):
+      #    payload=payload+queue.get_jobs()[0].args[0][i]+" "
 
-      payload=payload+" ,"
+      # payload=payload+" ,"
 
 
-      payload=payload+queue.get_jobs()[0].args[0][-1]
+      # payload=payload+queue.get_jobs()[0].args[0][-1]
 
-      print(payload)  
+      # print(payload)  
       
-      res={'expirement':payload}
+     # res={'expirement':payload}
 
       # client=mqtt.Client()
       # client.connect("broker.mqttdashboard.com", 1883, 60)
@@ -528,8 +532,9 @@ def peak(request):
       # publish('peak_value',payload)
 
       print('after sending')
+      res='hello'
 
-      return JsonResponse(res)
+      return JsonResponse(arg)
    
 
 

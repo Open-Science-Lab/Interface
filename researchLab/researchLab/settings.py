@@ -154,14 +154,25 @@ CACHES = {
     }
 }
 
-RQ_QUEUES = {
-    'default': {
-    'HOST': 'redis',
-    'PORT': 6380,
-    'DB': 0,
-    }
-}
+# RQ_QUEUES = {
+#     'default': {
+#     'HOST': 'redis',
+#     'PORT': 6380,
+#     'DB': 0,
+#     }
+# }
 
+# REDIS DOCKER SETTINGS
+
+RQ_QUEUES = {
+"default": {
+    "HOST": "redis",
+    "PORT": "6380",
+    "URL": os.getenv("REDISTOGO_URL", "redis://redis:6379"),  # If you're
+    "DB": 0,
+    "DEFAULT_TIMEOUT": 480,
+  }
+}
 
 # reddis settings
 REDIS_HOST = 'redis'
