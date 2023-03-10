@@ -4,7 +4,7 @@ from django.conf import settings
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 
-from .models import operation
+from .models import operation,beaker
 from .forms import NewuserForm
 from django.contrib import messages,auth
 from django.contrib.auth import login
@@ -566,3 +566,15 @@ def dequeue(request):
 
       return HttpResponse('Expirement dequeued')
    # return HttpResponse('Expirement dequeued')
+
+
+
+# beaker models func
+
+def addInd(arg):
+   beak=beaker()
+   beak.str=arg
+
+   beak.save()
+
+   return HttpResponse('Saved')

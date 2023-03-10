@@ -6,13 +6,17 @@ from paho.mqtt import client as mqtt_client
 import queue
 
 
+#from .views import addInd
+
+from .models import beaker
+
 
 q=queue.Queue(maxsize=6)
 
 
 
 
-broker = '10.156.248.197'
+broker = 'broker.mqttdashboard.com'
 port = 1883
 topic = "dropDown"
 # generate client ID with pub prefix randomly
@@ -48,9 +52,10 @@ def subscribe(client: mqtt_client):
         # p=x[2].split()
 
         print(str1)
-        file = open('beaker.txt','w')
-        file.write(str1)
-        file.close()
+
+        #file = open('beaker.txt','w')
+        #file.write(str1)
+        #file.close()
 
         q.put(str)
 
