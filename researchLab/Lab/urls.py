@@ -52,7 +52,8 @@ urlpatterns=[
         'get':'retrive',
         'put':'update',
         'delete':'delete'
-    }))
+    })),
 
+   
   
 ]

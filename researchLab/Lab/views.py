@@ -571,7 +571,7 @@ def dequeue(request):
 
 # beaker models func
 
-def addInd(arg):
+def addInd(request,arg):
    beak=beaker()
    beak.str=arg
 

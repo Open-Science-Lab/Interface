@@ -8,7 +8,28 @@ import queue
 
 #from .views import addInd
 
-from .models import beaker
+
+import psycopg2
+
+#establishing the connection
+conn = psycopg2.connect(
+   database="postgres", user='root', password='root', host='127.0.0.1', port= '5432'
+)
+
+
+
+cur=conn.cursor()
+
+#cur.execute("CREATE TABLE testBeaker(id SERIAL PRIMARY KEY,beakerId VARCHAR);")
+
+cur.execute("SELECT * FROM testBeaker")
+print(cur.fetchall())
+
+#conn.commit()
+
+
+
+
 
 
 q=queue.Queue(maxsize=6)
@@ -56,6 +77,10 @@ def subscribe(client: mqtt_client):
         #file = open('beaker.txt','w')
         #file.write(str1)
         #file.close()
+
+        cur.execute('INSERT INTO testBeaker (beakerId) VALUES(%s)',(str1,))
+
+        conn.commit()
 
         q.put(str)
 
