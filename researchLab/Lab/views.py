@@ -341,7 +341,13 @@ def expirementVer2(request):
 
       funcBody={"user":request.user.id,"operation_type":typeOfOperation,"arguments":reactionBody}
 
-      print(reactionBody)
+      convString=json.dumps(funcBody)
+
+      # print(reactionBody)
+
+     # client=mqtt.Client()
+      #client.connect("broker.emqx.io", 1883, 60)
+      #client.publish('dropDown', payload=convString, qos=0, retain=False)
 
       
       # calling the create operation rest api
@@ -349,8 +355,11 @@ def expirementVer2(request):
       api_url = "http://localhost:8000/operations/"
 
       response=requests.post(api_url,json=funcBody)
+      
 
+      
 
+      print(response)
 
 
 
@@ -364,7 +373,7 @@ def expirementVer2(request):
    cur=conn.cursor()
 
 
-   cur.execute("SELECT beakerId FROM testBeaker")
+   cur.execute("SELECT beakerId FROM testBeaker ORDER BY id DESC LIMIT 1")
    contents=list(cur.fetchone())
    print(contents)
    array=contents[0].split(",")
@@ -517,10 +526,10 @@ class OperationViewSet(viewsets.ViewSet):
       queue.enqueue(add_queue,q)
 
 
-      client.connect("broker.mqttdashboard.com", 1883, 60)
+      client.connect("broker.emqx.io", 1883, 60)
       print(serializer.data)
       payload=json.dumps(serializer.data)
-      client.publish('osltest456', payload=payload, qos=2, retain=False)
+      client.publish('dropDown', payload=payload, qos=0, retain=False)
       return Response(serializer.data,status=status.HTTP_201_CREATED)
 
    
