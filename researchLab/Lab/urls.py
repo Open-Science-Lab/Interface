@@ -39,6 +39,12 @@ urlpatterns=[
       path('userRegister/', UserRegisterAPI.as_view(), name='userRegister'),
       path('userlogin/',SignInAPI.as_view(),name="userLogin"),
 
+       
+
+       # VERSION-2 URLS
+
+       path('expirementVer2/',views.expirementVer2,name='expirementVer2'),
+
 
       # operations rest urls
 

@@ -13,17 +13,17 @@ import psycopg2
 
 #establishing the connection
 conn = psycopg2.connect(
-   database="postgres", user='root', password='root', host='db', port= '5432'
+   database="admin", user='root', password='root', host='db', port= '5432'
 )
 
 
 
 cur=conn.cursor()
 
-cur.execute("CREATE TABLE testBeaker(id SERIAL PRIMARY KEY,beakerId VARCHAR);")
+#cur.execute("CREATE TABLE testBeaker(id SERIAL PRIMARY KEY,beakerId VARCHAR);")
 
-#cur.execute("SELECT * FROM testBeaker")
-#print(cur.fetchall())
+cur.execute("SELECT * FROM testBeaker")
+print(cur.fetchall())
 
 #conn.commit()
 

@@ -20,6 +20,16 @@ services:
     restart: always
     ports:
       - "6380:6379"
+  
+  mqttservice:
+     container_name: osl_mqtt
+     build:
+      context: .
+     command: 'python -u mqttConsumer.py'
+     depends_on:
+      - db
+   
+    
 
   db:
     image: postgres

@@ -25,6 +25,12 @@ import time
 import paho.mqtt.client as mqtt
 import random
 
+
+
+# database
+
+import psycopg2
+
 # restframework
 
 from rest_framework import generics,viewsets
@@ -35,6 +41,7 @@ from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.views import APIView
 from django.http import Http404
+import requests
 
 from .serializers import UserSerializer, UserRegisterSerializer,UserLoginSerializer,OperationSerializer
 
@@ -309,6 +316,77 @@ def expirement1(request):
 
 
 
+# version-2
+
+# expirments func
+
+def expirementVer2(request):
+
+   if request.method=="POST":
+
+      
+      user = User.objects.all().filter(username=request.user.username).get()
+      print(request.user.id)
+     
+
+      typeOfOperation=request.POST['pickPlace']
+
+      instId=request.POST['beaker']
+
+      reactant=request.POST['ingredient1']
+
+      volume=request.POST['amt1']
+
+      reactionBody={'beaker':instId,'reactant':reactant,'volume':volume}
+
+      funcBody={"user":request.user.id,"operation_type":typeOfOperation,"arguments":reactionBody}
+
+      print(reactionBody)
+
+      
+      # calling the create operation rest api
+
+      api_url = "http://localhost:8000/operations/"
+
+      response=requests.post(api_url,json=funcBody)
+
+
+
+
+
+      return HttpResponse("done")
+
+   
+   conn = psycopg2.connect(
+   database="postgres", user='root', password='root', host='', port= '5432'
+)  
+
+   cur=conn.cursor()
+
+
+   contents=cur.execute("SELECT beakerId FROM testBeaker")
+   ls=contents.split()
+
+
+
+
+  # f = open('./Lab/beaker.txt', 'r')
+   # if f.mode == 'r':
+   #    contents =f.read()
+   #    print (contents)
+   #    ls=contents.split()
+   #    print(ls)
+       
+      
+   context={'beakers':ls}
+
+      
+   
+   return render(request,'testExpirement-1.html',context)
+
+ 
+       
+
 
 
 def work(request):
@@ -437,7 +515,7 @@ class OperationViewSet(viewsets.ViewSet):
       client.connect("broker.mqttdashboard.com", 1883, 60)
       print(serializer.data)
       payload=json.dumps(serializer.data)
-      client.publish('prateek1', payload=payload, qos=2, retain=False)
+      client.publish('osltest456', payload=payload, qos=2, retain=False)
       return Response(serializer.data,status=status.HTTP_201_CREATED)
 
    

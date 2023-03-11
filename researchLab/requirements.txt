@@ -29,3 +29,4 @@ whitenoise==6.3.0
 wrapt==1.14.1
 psycopg2-binary
 django-jsonfield
+requests
