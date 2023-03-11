@@ -22,8 +22,10 @@ cur=conn.cursor()
 
 #cur.execute("CREATE TABLE testBeaker(id SERIAL PRIMARY KEY,beakerId VARCHAR);")
 
-cur.execute("SELECT * FROM testBeaker")
-print(cur.fetchall())
+cur.execute("SELECT beakerId FROM testBeaker")
+contents=cur.fetchone()
+print(contents)
+
 
 #conn.commit()
 

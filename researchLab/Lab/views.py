@@ -358,27 +358,32 @@ def expirementVer2(request):
 
    
    conn = psycopg2.connect(
-   database="postgres", user='root', password='root', host='', port= '5432'
+   database="admin", user='root', password='root', host='db', port= '5432'
 )  
 
    cur=conn.cursor()
 
 
-   contents=cur.execute("SELECT beakerId FROM testBeaker")
-   ls=contents.split()
+   cur.execute("SELECT beakerId FROM testBeaker")
+   contents=list(cur.fetchone())
+   print(contents)
+   array=contents[0].split(",")
+   ls=array
+   
 
 
 
 
-  # f = open('./Lab/beaker.txt', 'r')
+   # f = open('./Lab/beaker.txt', 'r')
    # if f.mode == 'r':
+
    #    contents =f.read()
    #    print (contents)
    #    ls=contents.split()
    #    print(ls)
        
       
-   context={'beakers':ls}
+   context={'beakers': ls}
 
       
    
