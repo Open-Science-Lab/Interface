@@ -16,3 +16,9 @@ class operation(models.Model):
 
 class beaker(models.Model):
     str=models.CharField(max_length=250)
+
+
+class stream(models.Model):
+    lab_id=models.CharField(max_length=250)
+    video_streams=models.JSONField()
+

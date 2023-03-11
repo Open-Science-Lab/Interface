@@ -4,7 +4,7 @@ from django.conf import settings
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 
-from .models import operation,beaker
+from .models import operation,beaker,stream
 from .forms import NewuserForm
 from django.contrib import messages,auth
 from django.contrib.auth import login
@@ -43,7 +43,7 @@ from rest_framework.views import APIView
 from django.http import Http404
 import requests
 
-from .serializers import UserSerializer, UserRegisterSerializer,UserLoginSerializer,OperationSerializer
+from .serializers import UserSerializer, UserRegisterSerializer,UserLoginSerializer,OperationSerializer,StreamSerializer
 
 
 
@@ -542,11 +542,11 @@ class OperationViewSet(viewsets.ViewSet):
 
    def update(self,request,pk=None):
       op=operation.objects.get(id=pk)
-      serialzer=OperationSerializer(instance=op,data=request.data)
-      serialzer.is_valid(raise_exception=True)
-      serialzer.save()
+      serializer=OperationSerializer(instance=op,data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
 
-      return Response(serialzer.data,status=status.HTTP_202_ACCEPTED)
+      return Response(serializer.data,status=status.HTTP_202_ACCEPTED)
 
    
    def delete(self,request,pk=None):
@@ -558,6 +558,59 @@ class OperationViewSet(viewsets.ViewSet):
       op.delete()
 
       return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+# CRUD for streams
+
+
+class StreamViewSet(viewsets.ViewSet):
+
+   def list(self,request):
+      streams=stream.objects.all()
+      serializer=StreamSerializer(streams,many=True)
+
+      return Response(serializer.data)
+
+   
+   def create(self,request):
+      serializer=StreamSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+
+      serializer.save()
+
+      return Response(serializer.data,status=status.HTTP_201_CREATED)
+   
+   def retrive(self,request,pk=None):
+      vidStream=stream.objects.get(id=pk)
+      serializer=StreamSerializer(vidStream)
+
+      return Response(serializer.data)
+   
+   def update(self,request,pk=None):
+      vidStream=stream.objects.get(id=pk)
+      serializer=StreamSerializer(instance=vidStream,data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+
+
+      return Response(serializer.data,status=status.HTTP_202_ACCEPTED)
+
+   
+   def delete(self,request,pk=None):
+
+      try:
+         vidStream=stream.objects.get(id=pk)
+      except vidStream.DoesNotExist:
+         vidStream=None
+         raise Http404
+      
+      vidStream.delete()
+
+      return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
 
 
 # peak api

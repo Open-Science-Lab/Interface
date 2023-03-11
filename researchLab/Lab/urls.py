@@ -1,7 +1,7 @@
 from unicodedata import name
 from . import views
 from django.urls import path
-from .views import UserRegisterAPI,SignInAPI,OperationViewSet
+from .views import UserRegisterAPI,SignInAPI,OperationViewSet,StreamViewSet
 
 urlpatterns=[
     path('',views.index,name='index'),
@@ -59,6 +59,24 @@ urlpatterns=[
         'put':'update',
         'delete':'delete'
     })),
+
+
+    # video stream rest urls
+
+      path('streams/', StreamViewSet.as_view({
+        'get':'list',
+        'post':'create'
+        
+    })),
+
+    path('streams/<str:pk>',StreamViewSet.as_view({
+        'get':'retrive',
+        'put':'update',
+        'delete':'delete'
+    })),
+
+
+
 
    
   
