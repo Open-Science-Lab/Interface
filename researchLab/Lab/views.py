@@ -336,10 +336,18 @@ def expirementVer2(request):
       reactant=request.POST['ingredient1']
 
       volume=request.POST['amt1']
+      
+      if typeOfOperation =="2":
+       body={'beaker':instId,'reactant':reactant,'volume':volume}
+      
+      elif typeOfOperation == "1":
+          body={'beaker':instId}
+      
+      elif typeOfOperation=="3":
+         body={'beaker':instId}
 
-      reactionBody={'beaker':instId,'reactant':reactant,'volume':volume}
 
-      funcBody={"user":request.user.id,"operation_type":typeOfOperation,"arguments":reactionBody}
+      funcBody={"user":request.user.id,"operation_type":typeOfOperation,"arguments":body}
 
       convString=json.dumps(funcBody)
 
