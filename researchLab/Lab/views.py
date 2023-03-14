@@ -339,15 +339,18 @@ def expirementVer2(request):
       
       if typeOfOperation =="2":
        body={'beaker':instId,'reactant':reactant,'volume':volume}
+       funcBody={"user":request.user.id,"operation_type":"pour","arguments":body}
       
       elif typeOfOperation == "1":
           body={'beaker':instId}
+          funcBody={"user":request.user.id,"operation_type":"place","arguments":body}
       
       elif typeOfOperation=="3":
          body={'beaker':instId}
+         funcBody={"user":request.user.id,"operation_type":"pick","arguments":body}
 
 
-      funcBody={"user":request.user.id,"operation_type":typeOfOperation,"arguments":body}
+      
 
       convString=json.dumps(funcBody)
 
