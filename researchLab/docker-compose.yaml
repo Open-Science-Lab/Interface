@@ -1,11 +1,11 @@
-version: '3.8'
+version: "3.8"
 services:
   backend:
     container_name: osl_backend
     build:
       context: .
       dockerfile: Dockerfile
-    command: 'python -u manage.py runserver 0.0.0.0:8000'
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python -u manage.py runserver 0.0.0.0:8000"
     ports:
       - 8000:8000
     volumes:
@@ -13,23 +13,21 @@ services:
     depends_on:
       - db
       - redis
-  
+
   redis:
     image: "redis:alpine"
     container_name: osl_redis
     restart: always
     ports:
       - "6380:6379"
-  
+
   mqttservice:
-     container_name: osl_mqtt
-     build:
+    container_name: osl_mqtt
+    build:
       context: .
-     command: 'python -u mqttConsumer.py'
-     depends_on:
+    command: bash -c "python -u mqttConsumer.py"
+    depends_on:
       - db
-   
-    
 
   db:
     image: postgres
@@ -43,4 +41,3 @@ services:
       - .dbdata:/var/lib/postgres
     ports:
       - 5432:5432
-

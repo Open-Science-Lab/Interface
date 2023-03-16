@@ -19,26 +19,21 @@ conn = psycopg2.connect(
 
 
 cur=conn.cursor()
-
-#cur.execute("CREATE TABLE testBeaker(id SERIAL PRIMARY KEY,beakerId VARCHAR);")
+try:
+    cur.execute("CREATE TABLE testBeaker(id SERIAL PRIMARY KEY,beakerId VARCHAR);")
+    conn.commit()
+    print("table created")
+except:
+    conn.rollback()
+    print("table already created")
 
 cur.execute("SELECT beakerId FROM testBeaker")
 contents=cur.fetchone()
 print(contents)
 
 
-#conn.commit()
-
-
-
-
-
 
 q=queue.Queue(maxsize=6)
-
-
-
-
 broker = 'broker.mqttdashboard.com'
 port = 1883
 topic = "dropDown"
