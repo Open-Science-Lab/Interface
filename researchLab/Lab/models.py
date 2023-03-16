@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import JSONField
+from django.contrib.postgres.fields import ArrayField
 
 
 
@@ -12,6 +13,11 @@ class operation(models.Model):
     operation_type=models.CharField(max_length=100)
     arguments=models.JSONField()
 
+
+class operationV2(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    operation_type=models.CharField(max_length=100)
+    arguments=ArrayField(models.CharField(max_length=200), blank=True)
 
 
 class beaker(models.Model):

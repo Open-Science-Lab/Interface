@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate
 from django.db import models
 from django.db.models import fields
 
-from .models import operation , stream
+from .models import operation , stream ,operationV2
 
 
 # User Serializer
@@ -45,6 +45,14 @@ class OperationSerializer(serializers.ModelSerializer):
     class Meta:
         model=operation
         fields='__all__'
+
+
+class OperationV2Serializer(serializers.ModelSerializer):
+    class Meta:
+        model=operationV2
+        fields='__all__'
+
+
 
 
 

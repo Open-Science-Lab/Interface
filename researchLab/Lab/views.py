@@ -4,7 +4,7 @@ from django.conf import settings
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 
-from .models import operation,beaker,stream
+from .models import operation,beaker,stream,operationV2
 from .forms import NewuserForm
 from django.contrib import messages,auth
 from django.contrib.auth import login
@@ -43,7 +43,7 @@ from rest_framework.views import APIView
 from django.http import Http404
 import requests
 
-from .serializers import UserSerializer, UserRegisterSerializer,UserLoginSerializer,OperationSerializer,StreamSerializer
+from .serializers import UserSerializer, UserRegisterSerializer,UserLoginSerializer,OperationSerializer,StreamSerializer,OperationV2Serializer
 
 
 
@@ -338,15 +338,15 @@ def expirementVer2(request):
       volume=request.POST['amt1']
       
       if typeOfOperation =="2":
-       body={'beaker':instId,'reactant':reactant,'volume':volume}
+       body=[instId,reactant,volume]
        funcBody={"user":request.user.id,"operation_type":"pour","arguments":body}
       
       elif typeOfOperation == "1":
-          body={'beaker':instId}
+          body=[instId]
           funcBody={"user":request.user.id,"operation_type":"place","arguments":body}
       
       elif typeOfOperation=="3":
-         body={'beaker':instId}
+         body=[instId]
          funcBody={"user":request.user.id,"operation_type":"pick","arguments":body}
 
 
@@ -511,64 +511,127 @@ class SignInAPI(generics.GenericAPIView):
 
 class OperationViewSet(viewsets.ViewSet):
 
-   def list(self,request):
-      operations=operation.objects.all()
-      serializer=OperationSerializer(operations,many=True)
+    def list(self,request):
+       operations=operationV2.objects.all()
+       serializer=OperationV2Serializer(operations,many=True)
 
-      return Response(serializer.data)
+       return Response(serializer.data)
    
-   def create(self,request):
-      serializer=OperationSerializer(data=request.data)
-      serializer.is_valid(raise_exception=True)
+    def create(self,request):
+       serializer=OperationV2Serializer(data=request.data)
+       serializer.is_valid(raise_exception=True)
 
-      serializer.save()
-      client=mqtt.Client()
+       serializer.save()
+       client=mqtt.Client()
       
 
-      # inserting into redis queue
-      q=[]
+       # inserting into redis queue
+       q=[]
 
-      q.append(serializer.data)
+       q.append(serializer.data)
 
-      redis_cache=caches['default']
+       redis_cache=caches['default']
 
-      queue=django_rq.get_queue('default')
+       queue=django_rq.get_queue('default')
 
-      queue.enqueue(add_queue,q)
+       queue.enqueue(add_queue,q)
 
 
-      client.connect("broker.emqx.io", 1883, 60)
-      print(serializer.data)
-      payload=json.dumps(serializer.data)
-      client.publish('dropDown', payload=payload, qos=0, retain=False)
-      return Response(serializer.data,status=status.HTTP_201_CREATED)
-
-   
-   def retrive(self,request,pk=None):
-      op=operation.objects.get(id=pk)
-      serializer=OperationSerializer(op)
-
-      return Response(serializer.data)
-   
-
-   def update(self,request,pk=None):
-      op=operation.objects.get(id=pk)
-      serializer=OperationSerializer(instance=op,data=request.data)
-      serializer.is_valid(raise_exception=True)
-      serializer.save()
-
-      return Response(serializer.data,status=status.HTTP_202_ACCEPTED)
+       client.connect("broker.emqx.io", 1883, 60)
+       print(serializer.data)
+       payload=json.dumps(serializer.data)
+       client.publish('dropDown', payload=payload, qos=0, retain=False)
+       return Response(serializer.data,status=status.HTTP_201_CREATED)
 
    
-   def delete(self,request,pk=None):
-      try:
-         op=operation.objects.get(id=pk)
-      except op.DoesNotExist:
-         op=None
-         raise Http404
-      op.delete()
+    def retrive(self,request,pk=None):
+       op=operationV2.objects.get(id=pk)
+       serializer=OperationV2Serializer(op)
 
-      return Response(status=status.HTTP_204_NO_CONTENT)
+       return Response(serializer.data)
+   
+
+    def update(self,request,pk=None):
+       op=operationV2.objects.get(id=pk)
+       serializer=OperationV2Serializer(instance=op,data=request.data)
+       serializer.is_valid(raise_exception=True)
+       serializer.save()
+
+       return Response(serializer.data,status=status.HTTP_202_ACCEPTED)
+
+   
+    def delete(self,request,pk=None):
+       try:
+          op=operationV2.objects.get(id=pk)
+       except op.DoesNotExist:
+          op=None
+          raise Http404
+       op.delete()
+
+       return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+# class OperationViewSet(viewsets.ViewSet):
+
+#    def list(self,request):
+#       operations=operation.objects.all()
+#       serializer=OperationSerializer(operations,many=True)
+
+#       return Response(serializer.data)
+   
+#    def create(self,request):
+#       serializer=OperationSerializer(data=request.data)
+#       serializer.is_valid(raise_exception=True)
+
+#       serializer.save()
+#       client=mqtt.Client()
+      
+
+#       # inserting into redis queue
+#       q=[]
+
+#       q.append(serializer.data)
+
+#       redis_cache=caches['default']
+
+#       queue=django_rq.get_queue('default')
+
+#       queue.enqueue(add_queue,q)
+
+
+#       client.connect("broker.emqx.io", 1883, 60)
+#       print(serializer.data)
+#       payload=json.dumps(serializer.data)
+#       client.publish('dropDown', payload=payload, qos=0, retain=False)
+#       return Response(serializer.data,status=status.HTTP_201_CREATED)
+
+   
+#    def retrive(self,request,pk=None):
+#       op=operation.objects.get(id=pk)
+#       serializer=OperationSerializer(op)
+
+#       return Response(serializer.data)
+   
+
+#    def update(self,request,pk=None):
+#       op=operation.objects.get(id=pk)
+#       serializer=OperationSerializer(instance=op,data=request.data)
+#       serializer.is_valid(raise_exception=True)
+#       serializer.save()
+
+#       return Response(serializer.data,status=status.HTTP_202_ACCEPTED)
+
+   
+#    def delete(self,request,pk=None):
+#       try:
+#          op=operation.objects.get(id=pk)
+#       except op.DoesNotExist:
+#          op=None
+#          raise Http404
+#       op.delete()
+
+#       return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 
