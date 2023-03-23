@@ -28,6 +28,7 @@ DEBUG = True
 
 
 ALLOWED_HOSTS=["*"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost", "http://127.0.0.1", "http://65.2.121.146"]
 
 
 

@@ -44,6 +44,7 @@ urlpatterns=[
        # VERSION-2 URLS
 
        path('expirementVer2/',views.expirementVer2,name='expirementVer2'),
+       path('msg/',views.msg,name='msg'),
 
 
       # operations rest urls

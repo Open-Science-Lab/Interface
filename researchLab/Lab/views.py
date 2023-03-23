@@ -320,11 +320,19 @@ def expirement1(request):
 
 # expirments func
 
+
+def msg(request):
+   return render(request,'messages.html')
+
 def expirementVer2(request):
 
    if request.method=="POST":
 
-      
+      if not request.user.is_authenticated:
+          messages.info(request,'Please login to give commands')
+          return HttpResponse("Please login to give commands")
+
+
       user = User.objects.all().filter(username=request.user.username).get()
       print(request.user.id)
      
@@ -356,9 +364,9 @@ def expirementVer2(request):
 
       # print(reactionBody)
 
-     # client=mqtt.Client()
-      #client.connect("broker.emqx.io", 1883, 60)
-      #client.publish('dropDown', payload=convString, qos=0, retain=False)
+      client=mqtt.Client()
+      client.connect("broker.mqttdashboard.com", 1883, 60)
+      client.publish('dropDown', payload=convString, qos=2, retain=False)
 
       
       # calling the create operation rest api
@@ -372,25 +380,42 @@ def expirementVer2(request):
 
       print(response)
 
+      conn = psycopg2.connect(
+   database="admin", user='root', password='root', host='db', port= '5432'
+)
+      cur=conn.cursor()
 
 
-      return HttpResponse("done")
+      cur.execute("SELECT comment FROM testComment ORDER BY id DESC LIMIT 1")
+      comment=cur.fetchone()
+      print(comment)
+
+
+
+      return HttpResponse(comment)
 
    
    conn = psycopg2.connect(
    database="admin", user='root', password='root', host='db', port= '5432'
-)  
-
+)
    cur=conn.cursor()
 
 
    cur.execute("SELECT beakerId FROM testBeaker ORDER BY id DESC LIMIT 1")
    contents=list(cur.fetchone())
    print(contents)
-   array=contents[0].split(",")
-   ls=array
-   
+   array=contents[0].split(" ")
+   beakerLs=array
+   cur.execute("SELECT slotId FROM testSlot ORDER BY id DESC LIMIT 1")
+   contents=list(cur.fetchone())
+   print(contents)
+   array=contents[0].split(" ")
+   slotLs=array
 
+
+
+
+   conn.close()
 
 
 
@@ -403,11 +428,14 @@ def expirementVer2(request):
    #    print(ls)
        
       
-   context={'beakers': ls}
+   context={'beakers': beakerLs, 'slots': slotLs}
 
       
    
    return render(request,'testExpirement-1.html',context)
+
+ 
+       
 
  
        
@@ -537,10 +565,10 @@ class OperationViewSet(viewsets.ViewSet):
        queue.enqueue(add_queue,q)
 
 
-       client.connect("broker.emqx.io", 1883, 60)
+       client.connect("broker.mqttdashboard.com", 1883, 60)
        print(serializer.data)
        payload=json.dumps(serializer.data)
-       client.publish('dropDown', payload=payload, qos=0, retain=False)
+       client.publish('dropDown', payload=payload, qos=2, retain=True)
        return Response(serializer.data,status=status.HTTP_201_CREATED)
 
    

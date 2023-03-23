@@ -12,31 +12,42 @@ import queue
 import psycopg2
 
 #establishing the connection
-conn = psycopg2.connect(
+conn = conn = psycopg2.connect(
    database="admin", user='root', password='root', host='db', port= '5432'
 )
-
 
 
 cur=conn.cursor()
 try:
     cur.execute("CREATE TABLE testBeaker(id SERIAL PRIMARY KEY,beakerId VARCHAR);")
     conn.commit()
-    print("table created")
+    print("Beaker table created")
 except:
     conn.rollback()
-    print("table already created")
+    print("Beaker table already created")
 
-cur.execute("SELECT beakerId FROM testBeaker")
-contents=cur.fetchone()
-print(contents)
 
+try:
+    cur.execute("CREATE TABLE testSlot(id SERIAL PRIMARY KEY,slotId VARCHAR);")
+    conn.commit()
+    print("slot table created")
+except:
+    conn.rollback()
+    print("Slot table already created")
+
+try:
+    cur.execute("CREATE TABLE testComment(id SERIAL PRIMARY KEY,comment VARCHAR);")
+    conn.commit()
+    print("comment table created")
+except:
+    conn.rollback()
+    print("comment table already created")
 
 
 q=queue.Queue(maxsize=6)
 broker = 'broker.mqttdashboard.com'
 port = 1883
-topic = "dropDown"
+topic = [("dropDown/slot", 0), ("dropDown/Beaker", 0),("comment",0)]
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 100)}'
 # username = 'emqx'
@@ -59,25 +70,29 @@ def connect_mqtt() -> mqtt_client:
 
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
-        print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic\n")
         str1=msg.payload.decode()
+        print(f"Received `{str1}` from `{msg.topic}` topic\n")
         # x=str.split(",")
-        
         # print(x)
         # s,q,p=[],[],[]
         # s=x[0].split()
         # q=x[1].split()
         # p=x[2].split()
-
-        print(str1)
-
         #file = open('beaker.txt','w')
         #file.write(str1)
         #file.close()
+        if msg.topic == "dropDown/Beaker":
+            cur.execute('INSERT INTO testBeaker (beakerId) VALUES(%s)',(str1,))
+            conn.commit()
+        
+        if msg.topic == "dropDown/slot":
+            cur.execute('INSERT INTO testSlot (slotId) VALUES(%s)',(str1,))
+            conn.commit()
+        
+        if msg.topic == "comment":
+            cur.execute('INSERT INTO testComment (comment) VALUES(%s)',(str1,))
+            conn.commit()
 
-        cur.execute('INSERT INTO testBeaker (beakerId) VALUES(%s)',(str1,))
-
-        conn.commit()
 
         q.put(str)
 
@@ -87,7 +102,7 @@ def subscribe(client: mqtt_client):
 
         
 
-    client.subscribe(topic)
+    client.subscribe(topic, 0)
     client.on_message = on_message
 
 
