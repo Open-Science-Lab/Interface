@@ -28,3 +28,10 @@ class stream(models.Model):
     lab_id=models.CharField(max_length=250)
     video_streams=models.JSONField()
 
+class experiment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    lab_id = models.CharField(max_length=110)
+    equipments = ArrayField(models.CharField(max_length=200), blank=True)
+    stream = ArrayField(models.CharField(max_length=200), blank=True)
+    markers = ArrayField(models.CharField(max_length=200), blank=True)
+    reactants = ArrayField(models.CharField(max_length=250), blank=True)

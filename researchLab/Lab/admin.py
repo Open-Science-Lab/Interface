@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import operation,beaker,stream,operationV2
+from .models import operation,beaker,stream,operationV2,experiment
 
 # Register your models here.
 
@@ -11,3 +11,5 @@ admin.site.register(beaker)
 admin.site.register(stream)
 
 admin.site.register(operationV2)
+
+admin.site.register(experiment)

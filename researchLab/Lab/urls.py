@@ -1,8 +1,8 @@
 from unicodedata import name
 from . import views
 from django.urls import path
-from .views import UserRegisterAPI,SignInAPI,OperationViewSet,StreamViewSet
-
+from .views import ExperimentViewSet, UserRegisterAPI,SignInAPI,OperationViewSet,StreamViewSet
+    
 urlpatterns=[
     path('',views.index,name='index'),
     path('people/',views.people,name='people'),
@@ -77,7 +77,19 @@ urlpatterns=[
     })),
 
 
+     # video stream rest urls
 
+      path('experiment/', ExperimentViewSet.as_view({
+        'get':'list',
+        'post':'create'
+        
+    })),
+
+    path('experiment/<str:pk>',ExperimentViewSet.as_view({
+        'get':'retrive',
+        'put':'update',
+        'delete':'delete'
+    })),
 
    
   

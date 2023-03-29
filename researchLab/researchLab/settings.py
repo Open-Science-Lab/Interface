@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
      'knox',
 
+     'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -63,7 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'researchLab.urls'
@@ -96,7 +97,7 @@ DATABASES = {
         'NAME': 'admin', 
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': 'db', 
+        'HOST': 'localhost', 
         'PORT': '5432',
     }
 }
@@ -206,6 +207,8 @@ STATICFILES_DIRS=[
 STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
-
+CORS_ALLOWED_ORIGINS=[
+    'http://localhost:3000'
+]
 
 # ozudkymorpbsvrzi

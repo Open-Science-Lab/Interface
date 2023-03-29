@@ -4,7 +4,7 @@ from django.conf import settings
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 
-from .models import operation,beaker,stream,operationV2
+from .models import operation,beaker,stream,operationV2,experiment
 from .forms import NewuserForm
 from django.contrib import messages,auth
 from django.contrib.auth import login
@@ -43,7 +43,7 @@ from rest_framework.views import APIView
 from django.http import Http404
 import requests
 
-from .serializers import UserSerializer, UserRegisterSerializer,UserLoginSerializer,OperationSerializer,StreamSerializer,OperationV2Serializer
+from .serializers import UserSerializer, UserRegisterSerializer,UserLoginSerializer,OperationSerializer,StreamSerializer,OperationV2Serializer,ExperimentSerializer
 
 
 
@@ -381,7 +381,7 @@ def expirementVer2(request):
       print(response)
 
       conn = psycopg2.connect(
-   database="admin", user='root', password='root', host='db', port= '5432'
+   database="admin", user='root', password='root', host='localhost', port= '5432'
 )
       cur=conn.cursor()
 
@@ -396,7 +396,7 @@ def expirementVer2(request):
 
    
    conn = psycopg2.connect(
-   database="admin", user='root', password='root', host='db', port= '5432'
+   database="admin", user='root', password='root', host='localhost', port= '5432'
 )
    cur=conn.cursor()
 
@@ -484,7 +484,7 @@ def beakerTest(request):
    if request.method=="POST":
       beakerSlot=request.POST['beaker']
       print(beakerSlot)
-   f = open('/home/prateek-mohanty/Desktop/OSL_ORGANIZATION/OPEN_SCIENCE_LAB-master/researchLab/Lab/beaker.txt', 'r')
+   f = open('/Users/innoventes/Desktop/postgre/Interface/researchLab/Lab/beaker.txt', 'r')
    if f.mode == 'r':
        contents =f.read()
       #  print (contents)
@@ -711,6 +711,50 @@ class StreamViewSet(viewsets.ViewSet):
 
       return Response(status=status.HTTP_204_NO_CONTENT)
 
+
+# CURD for experiment
+
+class ExperimentViewSet(viewsets.ViewSet):
+
+   def list(self,request):
+      experiments=experiment.objects.all()
+      serializer=ExperimentSerializer(experiments,many=True)
+
+      return Response(serializer.data)
+
+   
+   def create(self,request):
+      serializer=ExperimentSerializer(data=request.data)
+      if serializer.is_valid(raise_exception=True):
+         serializer.save()
+         return Response(serializer.data,status=status.HTTP_201_CREATED)
+      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+   
+   def retrive(self,request,pk=None):
+      exp =experiment.objects.get(id=pk)
+      serializer=ExperimentSerializer(exp)
+
+      return Response(serializer.data)
+   
+   def update(self,request,pk=None):
+      exp =experiment.objects.get(id=pk)
+      serializer=ExperimentSerializer(instance=exp,data=request.data)
+      if serializer.is_valid(raise_exception=True):
+         serializer.save()
+         return Response(serializer.data,status=status.HTTP_202_ACCEPTED)
+      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+   
+   def delete(self,request,pk=None):
+
+      try:
+         exp=experiment.objects.get(id=pk)
+      except experiment.DoesNotExist:
+         exp=None
+         raise Http404
+      
+      exp.delete()
+
+      return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 
